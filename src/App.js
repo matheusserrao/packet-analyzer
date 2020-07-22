@@ -11,8 +11,6 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Accordion from 'react-bootstrap/Accordion'
 
-
-
 import swal from 'sweetalert'
 
 import LoadDevices from './services/LoadDevices'
@@ -119,16 +117,19 @@ const App = () => {
                         const informationApiLog = await ApiLog.getInformationPackets(idDeviceSelected, inputDate)
                         console.log('information api log', informationApiLog)
 
+
+
                         const percentTotalPacketsReceivedApiLog = parseInt((informationApiLog.totalPackets / 84600) * 100)
                         const percentTotalPacketsLossApiLog = parseInt((informationApiLog.totalPacketsLoss / 84600) * 100)
-
-                        setTotalPacketsApiLog(informationApiLog.totalPackets)
-                        setTotalPacketsLossApiLog(informationApiLog.totalPacketsLoss)
+                        
                         setPercentTotalPacketsReceivedApiLog(percentTotalPacketsReceivedApiLog)
                         setPercentTotalPacketsLossApiLog(percentTotalPacketsLossApiLog)
-
+                        setTotalPacketsApiLog(informationApiLog.totalPackets)
+                        setTotalPacketsLossApiLog(informationApiLog.totalPacketsLoss)
+               
                         if (informationApiLog.firstLog && informationApiLog.firstLog.length){
 
+    
                             const [ firstLog ] = informationApiLog.firstLog
                             setFirstPacketApiLog(firstLog)
                             setFirstDatePacketApiLog(firstLog.date)
@@ -148,8 +149,6 @@ const App = () => {
                             setLastPacketApiLog('-')
                             setLastDatePacketApiLog('-')
                         }
-
-                        
 
                         // API ANALYTICS
                         const informationApiAnalytics = await ApiAnalytics.getInformationPackets(idDeviceSelected, inputDate)
