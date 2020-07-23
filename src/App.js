@@ -121,7 +121,7 @@ const App = () => {
 
                         const percentTotalPacketsReceivedApiLog = parseInt((informationApiLog.totalPackets / 84600) * 100)
                         const percentTotalPacketsLossApiLog = parseInt((informationApiLog.totalPacketsLoss / 84600) * 100)
-                        
+
                         setPercentTotalPacketsReceivedApiLog(percentTotalPacketsReceivedApiLog)
                         setPercentTotalPacketsLossApiLog(percentTotalPacketsLossApiLog)
                         setTotalPacketsApiLog(informationApiLog.totalPackets)
@@ -200,9 +200,9 @@ const App = () => {
                             <Card.Body>
                                 <Card.Title><strong>Total Packet Loss - (Recovered)</strong></Card.Title>
                                 <Card.Text>
-                                    API Log: <label style={{color: 'red'}}>{totalPacketsLossApiLog}</label> |  <label style={{color: 'green'}}>{percentTotalPacketsLossApiLog}%</label> perda
+                                    API Log: <label style={{color: 'red'}}>{totalPacketsLossApiLog}</label> |  <label style={{color: 'green'}}>{percentTotalPacketsLossApiLog}%</label> Recovered
                                     <br/>
-                                    API Analytics: <label style={{color: 'red'}}>{totalPacketsLossApiAnalytics}</label> |  <label style={{color: 'green'}}>{percentTotalPacketsLossApiAnalytics}%</label> perda
+                                    API Analytics: <label style={{color: 'red'}}>{totalPacketsLossApiAnalytics}</label> |  <label style={{color: 'green'}}>{percentTotalPacketsLossApiAnalytics}%</label> Recovered
                          
                         </Card.Text>
                             </Card.Body>
