@@ -160,7 +160,7 @@ const App = () => {
 
                         const duration = moment.duration(diff)
                         const totalSeconds = duration.asSeconds() || 84600
-                        
+
                         console.log('total seconds', totalSeconds)
 
                         const percentTotalPacketsReceivedApiAnalytics = parseInt((informationApiAnalytics.totalPackets / totalSeconds) * 100)
@@ -200,7 +200,7 @@ const App = () => {
                         </Card.Text>
                             </Card.Body>
                             <Card.Footer>
-                                <small className="text-muted">Total per day: 84600 | Api Analytics: current > 0.05</small>
+                                <small className="text-muted">Energy</small>
                             </Card.Footer>
                         </Card>
 
