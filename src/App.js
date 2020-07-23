@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react'
+import moment from 'moment'
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Container from 'react-bootstrap/Container'
@@ -117,8 +119,6 @@ const App = () => {
                         const informationApiLog = await ApiLog.getInformationPackets(idDeviceSelected, inputDate)
                         console.log('information api log', informationApiLog)
 
-
-
                         const percentTotalPacketsReceivedApiLog = parseInt((informationApiLog.totalPackets / 84600) * 100)
                         const percentTotalPacketsLossApiLog = parseInt((informationApiLog.totalPacketsLoss / 84600) * 100)
 
@@ -129,7 +129,6 @@ const App = () => {
                
                         if (informationApiLog.firstLog && informationApiLog.firstLog.length){
 
-    
                             const [ firstLog ] = informationApiLog.firstLog
                             setFirstPacketApiLog(firstLog)
                             setFirstDatePacketApiLog(firstLog.date)
@@ -154,8 +153,18 @@ const App = () => {
                         const informationApiAnalytics = await ApiAnalytics.getInformationPackets(idDeviceSelected, inputDate)
                         console.log('information api analytics', informationApiAnalytics)
 
-                        const percentTotalPacketsReceivedApiAnalytics = parseInt((informationApiAnalytics.totalPackets / 84600) * 100)
-                        const percentTotalPacketsLossApiAnalytics = parseInt((informationApiAnalytics.packetLoss / 84600) * 100)
+                        const startDate = moment.utc(informationApiAnalytics.firstDate)
+                        const endDate   = moment.utc(informationApiAnalytics.lastDate).endOf('day')
+
+                        const diff = endDate.diff(startDate)
+
+                        const duration = moment.duration(diff)
+                        const totalSeconds = duration.asSeconds() || 84600
+                        
+                        console.log('total seconds', totalSeconds)
+
+                        const percentTotalPacketsReceivedApiAnalytics = parseInt((informationApiAnalytics.totalPackets / totalSeconds) * 100)
+                        const percentTotalPacketsLossApiAnalytics = parseInt((informationApiAnalytics.packetLoss / totalSeconds) * 100)
 
                         setTotalPacketsApiAnalytics(informationApiAnalytics.totalPackets)
                         setTotalPacketsLossApiAnalytics(informationApiAnalytics.packetLoss)
@@ -168,7 +177,6 @@ const App = () => {
                         setOnlineApiAnalytics(informationApiAnalytics.online)                     
                         
                         setIsSearching(false)
-
 
                     }}>Buscar informações</Button>
 
@@ -230,7 +238,6 @@ const App = () => {
 
                     <CardGroup className="text-center">
                        
-
                         <Card>
 
                             <Card.Body>

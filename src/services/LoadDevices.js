@@ -21,7 +21,6 @@ const loadDevices = async () => {
 
     }
 
-
     return []
 }
 
