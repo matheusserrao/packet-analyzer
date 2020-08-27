@@ -140,11 +140,11 @@ const App = () => {
                 <Card.Body> <Table striped bordered hover>
                 <thead>
                     <tr>
-                    <th>ID</th>
+                    <th>Device</th>
                     <th>Total Packets</th>
                     <th>Total Packet Loss - (Recovered)</th>
                     <th>% Received</th>
-                    <th>Counter Packet Loss</th>
+                    <th>Counter Recovered</th>
                     <th>First Packet</th>
                     <th>Last Packet</th>
                     </tr>
@@ -156,7 +156,9 @@ const App = () => {
                             return ( 
                                 <tr key={index}> 
                                 <td> 
-                                    {info.id}
+                                    {
+                                      (devices && devices.length) ? `${info.id} - ${devices.find(d => d.value == info.id).label}` : ''
+                                    }
                                 </td>
                                 <td>
                                     {info.totalPacket}
@@ -166,7 +168,7 @@ const App = () => {
                                 </td>
 
                                 <td>
-                                    {parseInt((info.totalPacket / informationLog.seconds) * 100)}%
+                                    {parseInt((info.totalPacket / informationLog.totalSeconds) * 100)}%
                                 </td>
 
                                 <td>
