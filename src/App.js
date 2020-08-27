@@ -168,7 +168,7 @@ const App = () => {
                                 </td>
 
                                 <td>
-                                    {parseInt((info.totalPacket / informationLog.seconds) * 100)}%
+                                    {parseInt((info.totalPacket / informationLog.totalSeconds) * 100)}%
                                 </td>
 
                                 <td>
