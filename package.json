@@ -9,10 +9,13 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
     "moment": "^2.27.0",
+    "moment-timezone": "^0.5.31",
     "react": "^16.13.1",
     "react-bootstrap": "^1.2.2",
     "react-dom": "^16.13.1",
+    "react-multi-select-component": "^3.0.1",
     "react-scripts": "3.4.1",
+    "react-widgets": "^4.5.0",
     "sweetalert": "^2.1.2"
   },
   "scripts": {
